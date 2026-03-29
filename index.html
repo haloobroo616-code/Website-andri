@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>AndriFTGG Store | Panel Pterodactyl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 30% 10%, #0a0f1e, #020617);
+            min-height: 100vh;
+            padding: 2rem 1.2rem 3rem;
+            color: #f0f3fa;
+        }
+
+        .container {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* Profile */
+        .profile {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeUp 0.6s ease;
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(139, 92, 246, 0.6);
+            box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.4);
+        }
+
+        .store-name {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #c084fc, #60a5fa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-top: 0.8rem;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            background: rgba(255,255,255,0.08);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 40px;
+            margin-top: 8px;
+        }
+
+        /* ===== TEKS KLIK TANPA URL ===== */
+        .clickable-section {
+            text-align: center;
+            margin: 1.5rem 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .clickable-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: #9bb2e6;
+            margin-bottom: 0.3rem;
+        }
+
+        .clickable-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: linear-gradient(115deg, #ffffff, #c4b5fd);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .clickable-section:active {
+            transform: scale(0.97);
+            opacity: 0.8;
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 0.5rem 0;
+        }
+
+        /* Card untuk konten lain */
+        .glass-card {
+            background: rgba(15, 25, 45, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 1.8rem;
+            padding: 1.2rem 1.3rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .promo-banner {
+            background: linear-gradient(125deg, #2d1b4e, #0f172a);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            text-align: center;
+            margin: 1.5rem 0 1rem;
+            border-left: 4px solid #f97316;
+        }
+
+        .promo-banner h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: #94a3d8;
+            margin-bottom: 0.8rem;
+        }
+
+        .price-item {
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 1.2rem;
+            padding: 0.7rem 1rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .price-item:active {
+            transform: scale(0.98);
+            background: #1f2a48;
+        }
+
+        .price-label {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .price-value {
+            background: #facc1530;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .btn-order {
+            background: linear-gradient(105deg, #25D366, #128C7E);
+            border: none;
+            padding: 5px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .btn-order:active {
+            transform: scale(0.95);
+        }
+
+        .benefit-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .benefit-list li {
+            font-size: 0.75rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .benefit-list i {
+            color: #22c55e;
+            font-size: 11px;
+        }
+
+        .other-products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .product-chip {
+            background: #1e2a47;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .product-chip:active {
+            transform: scale(0.96);
+            background: #334263;
+        }
+
+        .testi-channel {
+            background: #0f172f;
+            border-radius: 1rem;
+            padding: 8px;
+            margin-top: 8px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+
+        .testi-channel:active {
+            transform: scale(0.98);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.6rem;
+            color: #4b556b;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: #0f172aee;
+            backdrop-filter: blur(12px);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: white;
+            z-index: 1000;
+            opacity: 0;
+            transition: 0.2s;
+            pointer-events: none;
+            border: 1px solid #3b82f6;
+            white-space: nowrap;
+        }
+
+        .admin-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Profile -->
+    <div class="profile">
+        <img class="avatar" src="https://files.catbox.moe/hm1iky.jpg" alt="AndriFTGG">
+        <div class="store-name">AndriFTGG Store</div>
+        <div class="badge"><i class="fas fa-server"></i> Panel Pterodactyl | Digital Store</div>
+    </div>
+
+    <!-- ===== SALURAN ADMIN & NOMOR ADMIN - TEKS SAJA, KLIK LANGSUNG ===== -->
+    <div class="admin-row">
+        <!-- SALURAN ADMIN - teks saja -->
+        <div id="channelClick" class="clickable-section" style="width: auto;">
+            <div class="clickable-title"><i class="fab fa-whatsapp"></i> SALURAN ADMIN</div>
+            <div class="clickable-value">Klik untuk buka</div>
+        </div>
+
+        <!-- NOMOR ADMIN - teks saja -->
+        <div id="phoneClick" class="clickable-section" style="width: auto;">
+            <div class="clickable-title"><i class="fas fa-phone-alt"></i> NOMOR ADMIN</div>
+            <div class="clickable-value">Klik untuk chat</div>
+        </div>
+    </div>
+
+    <!-- PROMO -->
+    <div class="promo-banner">
+        <h3>🔥 SEDIA PANEL PTERODACTYL BERKUALITAS 🔥</h3>
+        <p style="font-size: 0.8rem; margin-top: 4px;">❗ ADA PROMO NIH ❗</p>
+    </div>
+
+    <!-- RESELLER PANEL -->
+    <div class="glass-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+                <span style="font-weight: 800; font-size: 1.3rem;">Rp15.000</span>
+                <span style="background: #f97316; padding: 2px 10px; border-radius: 30px; font-size: 0.65rem; margin-left: 8px;">Permanen</span>
+            </div>
+            <button class="btn-order" id="resellerBtn"><i class="fab fa-whatsapp"></i> Ambil Reseller</button>
+        </div>
+        <ul class="benefit-list">
+            <li><i class="fas fa-check-circle"></i> Server dijamin kencang</li>
+            <li><i class="fas fa-check-circle"></i> Panel Dilengkapi protect security</li>
+            <li><i class="fas fa-check-circle"></i> Bisa create panel sepuasnya</li>
+            <li><i class="fas fa-check-circle"></i> Bisa jualan panel + balik modal kalo usaha</li>
+        </ul>
+    </div>
+
+    <!-- LIST PANEL MURAH -->
+    <div class="glass-card">
+        <div class="section-title"><i class="fas fa-microchip"></i> LIST PANEL MURAH</div>
+        <div id="panelList"></div>
+    </div>
+
+    <!-- BENEFIT PANEL BIASA -->
+    <div class="glass-card">
+        <div class="section-title"><i class="fas fa-shield-alt"></i> BENEFIT PANEL BIASA</div>
+        <ul class="benefit-list">
+            <li><i class="fas fa-tachometer-alt"></i> Spek VPS R16 C8</li>
+            <li><i class="fas fa-lock"></i> Sudah Ada protect jadi aman</li>
+            <li><i class="fas fa-clock"></i> Garansi 7H (2x replace)</li>
+            <li><i class="fas fa-sync-alt"></i> Panel Mokad? Sudah siap cadangan</li>
+            <li><i class="fas fa-dice-d6"></i> Anti drama kecolongan sc / rusuh / intip</li>
+            <li><i class="fas fa-rocket"></i> Server dijamin kenceng & anti lemot</li>
+            <li><i class="fas fa-calendar-alt"></i> Masa aktif 30 day+</li>
+        </ul>
+    </div>
+
+    <!-- PRODUK LAINNYA FREE FIRE -->
+    <div class="glass-card">
+        <div class="section-title"><i class="fas fa-gamepad"></i> PRODUK LAINNYA (FREE FIRE)</div>
+        <div class="other-products" id="ffProducts"></div>
+    </div>
+
+    <!-- CONNECT ADMIN & TESTIMONI -->
+    <div class="glass-card">
+        <div class="section-title"><i class="fas fa-link"></i> CONNECT ADMIN</div>
+        <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+            <button class="btn-order" id="waDirectBtn"><i class="fab fa-whatsapp"></i> WhatsApp Admin</button>
+            <button class="btn-order" id="telegramBtn" style="background:#0088cc;"><i class="fab fa-telegram"></i> Telegram</button>
+        </div>
+        <div class="section-title"><i class="fas fa-comment-dots"></i> SALURAN TESTIMONI</div>
+        <div class="testi-channel" id="testi1">
+            <i class="fab fa-whatsapp"></i> Channel Testimoni 1
+        </div>
+        <div class="testi-channel" id="testi2">
+            <i class="fab fa-whatsapp"></i> Saluran Dua
+        </div>
+    </div>
+    <footer>✦ AndriFTGG Store • Aman & Terpercaya ✦</footer>
+</div>
+<div id="toastMsg" class="toast-msg"></div>
+
+<script>
+    // Data Panel
+    const panelData = [
+        { ram: "1GB", harga: 1000 }, { ram: "2GB", harga: 2000 }, { ram: "3GB", harga: 2500 },
+        { ram: "4GB", harga: 3000 }, { ram: "5GB", harga: 3500 }, { ram: "6GB", harga: 4000 },
+        { ram: "7GB", harga: 4500 }, { ram: "8GB", harga: 5000 }, { ram: "9GB", harga: 5500 },
+        { ram: "10GB", harga: 6000 }, { ram: "Unli", harga: 8000 }
+    ];
+
+    const ffItems = [
+        { name: "FF DRAG HEADSHOT SG & SMG", harga: 5000, msg: "FF Drag Headshot SG & SMG" },
+        { name: "ONE TAB GOD V1 COCOK PEPENG", harga: 5000, msg: "One Tab God V1" },
+        { name: "REGE LOCK HEAD", harga: 7000, msg: "Rege Lock Head" },
+        { name: "AIMLOCK BEST SELLER", harga: 5000, msg: "Aimlock Best Seller" }
+    ];
+
+    const adminPhone = "6282251764737";
+    const channelUrl = "https://whatsapp.com/channel/0029Vb7law57IUYN1PKn8e2l";
+
+    function getCleanPhone() {
+        let phone = adminPhone.replace(/\D/g, '');
+        if(phone.startsWith('0')) phone = '62' + phone.slice(1);
+        if(!phone.startsWith('62')) phone = '62' + phone;
+        return phone;
+    }
+
+    function sendWA(message) {
+        window.open(`https://wa.me/${getCleanPhone()}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function showToast(msg) {
+        const toast = document.getElementById('toastMsg');
+        toast.textContent = msg;
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(-50%) scale(1)';
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(-50%) scale(0.9)';
+        }, 1500);
+    }
+
+    // ===== TEKS SALURAN ADMIN & NOMOR ADMIN =====
+    document.getElementById('channelClick').addEventListener('click', () => {
+        window.open(channelUrl, '_blank');
+        showToast("📢 Membuka Saluran Admin");
+    });
+
+    document.getElementById('phoneClick').addEventListener('click', () => {
+        window.open(`https://wa.me/${getCleanPhone()}?text=Halo%20Admin`, '_blank');
+        showToast("💬 Chat WhatsApp Admin");
+    });
+
+    // Generate Panel
+    const panelContainer = document.getElementById('panelList');
+    panelData.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'price-item';
+        div.innerHTML = `
+            <div class="price-label"><i class="fas fa-microchip"></i> Ram ${p.ram} : <span class="price-value">Rp${p.harga.toLocaleString('id')}</span></div>
+            <button class="btn-order" data-ram="${p.ram}" data-harga="${p.harga}"><i class="fab fa-whatsapp"></i> Beli ${p.ram}</button>
+        `;
+        panelContainer.appendChild(div);
+    });
+
+    document.querySelectorAll('[data-ram]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const ram = btn.getAttribute('data-ram');
+            const harga = parseInt(btn.getAttribute('data-harga'));
+            sendWA(`Halo admin, saya mau beli panel ${ram} dengan harga Rp${harga.toLocaleString('id')}. Apakah ready?`);
+            showToast(`🛒 Beli Panel ${ram}`);
+        });
+    });
+
+    document.querySelectorAll('.price-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            if(e.target.tagName !== 'BUTTON') {
+                const btn = item.querySelector('.btn-order');
+                if(btn) btn.click();
+            }
+        });
+    });
+
+    // Reseller
+    document.getElementById('resellerBtn').addEventListener('click', () => {
+        sendWA("Halo admin, saya tertarik ambil Reseller Panel Permanen Rp15.000. Mohon info lebih lanjut.");
+        showToast("✨ Ambil Reseller");
+    });
+
+    // FF Products
+    const ffContainer = document.getElementById('ffProducts');
+    ffItems.forEach(item => {
+        const chip = document.createElement('div');
+        chip.className = 'product-chip';
+        chip.innerHTML = `<i class="fas fa-fire"></i> ${item.name} : Rp${item.harga.toLocaleString('id')}`;
+        chip.addEventListener('click', () => {
+            sendWA(`Halo admin, saya mau beli ${item.msg} seharga Rp${item.harga.toLocaleString('id')}. Apakah ready?`);
+            showToast(`🕹️ ${item.name.substring(0, 20)}`);
+        });
+        ffContainer.appendChild(chip);
+    });
+
+    // WA Direct & Telegram
+    document.getElementById('waDirectBtn').addEventListener('click', () => {
+        window.open(`https://wa.me/${getCleanPhone()}?text=Halo%20Admin%2C%20saya%20butuh%20info%20panel`, '_blank');
+        showToast("📱 Chat Admin");
+    });
+    document.getElementById('telegramBtn').addEventListener('click', () => {
+        window.open('https://t.me/AndriZxcll', '_blank');
+        showToast("📲 Membuka Telegram");
+    });
+
+    // Testimoni
+    document.getElementById('testi1').addEventListener('click', () => {
+        window.open('https://whatsapp.com/channel/0029Vb7law57IUYN1PKn8e2l', '_blank');
+        showToast("📢 Testimoni 1");
+    });
+    document.getElementById('testi2').addEventListener('click', () => {
+        window.open('https://whatsapp.com/channel/0029VbCd9RKKQuJGW0UAAq0V', '_blank');
+        showToast("📢 Saluran Dua");
+    });
+</script>
+</body>
+</html>
